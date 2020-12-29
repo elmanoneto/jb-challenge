@@ -18,6 +18,25 @@ class ProductsController {
             return res.status(422).send({ status: 422, data: error.message })
         }
     }
+
+    async getById (req: Request, res: Response) {
+        const { id } = req.params
+
+        try {
+            const products = db.getCollection('products')
+
+            const result = products.find({ id: id })
+
+            if (result) {
+                return res.json(result)
+            }
+
+            return res.json({})
+        } catch (error) {
+            return res.status(422).send({ status: 422, data: error.message })
+        }
+
+    }
 }
 
 export default new ProductsController()
