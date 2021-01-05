@@ -1,17 +1,28 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 
+import CartContext from '../../store/cart.store'
 import './list.styles.css'
 
-function Item() {
+function Item({ product, removeQuantityItem }) {
+    const store = useContext(CartContext)
+
+    const addToCart = ({ id, price, image }) => {
+        store.setCart({ id: id, price: price, image: image })
+    }
+
     return (
         <Fragment>
-            <div className="list__item">
-                <p className="disponibility">10 disponíveis</p>
-                <img src="https://imgcentauro-a.akamaihd.net/900x900/94047401/mountain-bike-caloi-vulcan-aro-29-freio-a-disco-mecanico-cambio-traseiro-shimano-21-marchas-img.jpg" alt=""/>
-                <h4>Bike Top BMX</h4>
+            <div className={`list__item ${product.quantity === 0 ? 'fade' : ''}`}>
+                <p className="disponibility">{product.quantity} disponíveis</p>
+                <img src={product.image} alt=""/>
+                <h4>{product.name}</h4>
                 <div className="buy">
-                    <p className="price">R$ 1.545,99</p>
-                    <button className="btn-buy">Add to cart</button>
+                    <p className="price">R$ {product.price}</p>
+                    <button 
+                        className="btn-buy" 
+                        onClick={() => { addToCart(product); removeQuantityItem(product.id) }} 
+                        disabled={product.quantity < 1}>Add to cart
+                    </button>
                 </div>
             </div>
         </Fragment>

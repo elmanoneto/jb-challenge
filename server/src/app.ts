@@ -60,7 +60,7 @@ class App {
             name: 'Bicicleta Cannondale F-SI Carbon 5',
             quantity: 4,
             make: 'Cannondale',
-            image: 'http://upload.bikepointsc.com.br/g/g35275_1.jpghttp://upload.bikepointsc.com.br/g/g35275_1.jpg',
+            image: 'https://upload.bikepointsc.com.br/g/g34970_1.jpg',
             weight: 9,
             price: 7000,
             hoop: 29
