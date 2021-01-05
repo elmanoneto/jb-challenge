@@ -1,0 +1,38 @@
+section.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+section.list .list__item {
+    flex: 0 0 32.3333%;
+    border: 1px solid black;
+    margin: 10px auto 0;
+    text-align: center;
+}
+
+section.list .list__item .disponibility {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+section.list .list__item img {
+    width: 150px;
+}
+
+section.list .list__item .buy {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+section.list .list__item .buy .btn-buy {
+    background-color: #4f6cff;
+    border: 0;
+    color: #fff;
+    padding: 5px 10px;
+}
+
+section.list .list__item .buy .price {
+    color: #9e9e9e;
+}

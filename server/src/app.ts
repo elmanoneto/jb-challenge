@@ -1,4 +1,6 @@
 import express, { Router } from 'express'
+import { graphqlHTTP } from 'express-graphql'
+import { buildSchema } from 'graphql'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import cors from 'cors'
@@ -6,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import db from './database/database'
 import productsRoutes from './modules/products/routes'
+import cartsRoutes from './modules/cart/routes'
 
 class App {
     public app: express.Application
@@ -13,17 +16,18 @@ class App {
 
     constructor () {
         this.app = express()
-        this.routes()
-        this.middlewares()
 
         db.addCollection('products')
         db.addCollection('cart')
-
         this.createProducts()
+
+        this.middlewares()
+        this.routes()
     }
 
     private routes () {
         this.app.use(productsRoutes)
+        this.app.use(cartsRoutes)
     }
 
     private createProducts () {
@@ -97,11 +101,54 @@ class App {
     }
 
     private middlewares () {
-        this.app.use(morgan('dev'))
+        this.app.use(bodyParser.json())
         this.app.use(bodyParser.urlencoded({
             extended: true
         }))
+        this.app.use(morgan('dev'))
         this.app.use(cors())
+
+        const schema = buildSchema(`
+            type Product {
+                id: ID
+                name: String
+                quantity: Int
+                make: String
+                image: String
+                weight: Int
+                price: Int
+                hoop: Int
+            }
+
+            type Query {
+                product(id: ID!): Product
+                products: [Product]
+            }
+        `)
+
+        const products = db.getCollection('products')
+
+        const result = products.find({})
+
+        const providers = {
+            products: result
+        }
+
+        const resolvers = {
+            product (request: any) {
+                const { id } = request
+                return products.find({ id: id })[0]
+            },
+            products () {
+                return result
+            }
+        }
+
+        this.app.use('/graphql', graphqlHTTP({
+            schema,
+            rootValue: resolvers,
+            graphiql: true
+        }))
     }
 
     public listen () {
