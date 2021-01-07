@@ -1,19 +1,20 @@
 import React, { Fragment } from 'react'
-import { Route, BrowserRouter } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 import './content.styles.css'
 import productRoutes from '../pages/products/products.routes'
+import cartRoutes from '../pages/cart/cart.routes'
 
 function Content() {
-    const content = productRoutes.map(route => <Route exact { ...route } key={Math.random()} />)
+    const routes = [ ...cartRoutes, ...productRoutes ]
+
+    const content = routes.map(route => <Route exact { ...route } key={Math.random()} />)
 
     return (
         <Fragment>
-            <BrowserRouter>
-                <main>
-                    { content }
-                </main>
-            </BrowserRouter>
+            <main>
+                { content }
+            </main>
         </Fragment>
     )
 }

@@ -17,6 +17,7 @@ header.header .header__cart {
 
 header.header .header__cart .header__cart--resume {
     position: relative;
+    cursor: pointer;
 }
 
 header.header .header__cart .header__cart--resume .badge {

@@ -1,43 +1,45 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useContext } from 'react'
+import { observer } from 'mobx-react-lite'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
+import CartStore from '../../store/store'
 import './list.styles.css'
 import Item from './item'
 
-function List () {
-
-    const GET_PRODUCTS = gql`
-        {
-            products {
-                id,
-                name,
-                quantity,
-                image,
-                price
-            }
-        }
-    `
-
-    const { data, loading, error } = useQuery(GET_PRODUCTS)
-
-    const removeQuantityItem = id => {
-        data.products = data.products.map(product => {
-            if (product.id === id) {
-                product.quantity -= 1
-            }
-
-            return product
-        })
+const GET_PRODUCTS = gql`
+{
+    products {
+        id,
+        name,
+        quantity,
+        image,
+        price,
+        weight,
+        hoop,
+        make
     }
+}
+`
+function List () {
+    const cartStore = useContext(CartStore)
+    const { setProducts, getProducts } = cartStore
+
+    const addProducts = data => {
+        if (!getProducts.length) {
+            setProducts(data)
+        }
+    }
+
+    const { data } = useQuery(GET_PRODUCTS, { onCompleted: addProducts })
 
     return (
         <Fragment>
             <h2>Products List</h2>
             <section className="list">
-                {data && data.products.map(product => {
+                {getProducts.length > 0 && getProducts.map(product => {
                     return (
-                        <Item key={product.id} product={product} removeQuantityItem={removeQuantityItem} />
+                        <Item key={product.id} product={product} />
                     )
                 })}
             </section>
@@ -45,4 +47,4 @@ function List () {
     )
 }
 
-export default List
+export default observer(List)

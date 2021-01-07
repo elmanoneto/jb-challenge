@@ -1,23 +1,24 @@
 import React, { useContext } from 'react'
+import { observer } from 'mobx-react-lite'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { useHistory } from 'react-router-dom'
 
-import CartContext from '../store/cart.store'
+import CartStore from '../store/store'
 import './header.style.css'
 
 function Header() {
-    const store = useContext(CartContext)
+    const history = useHistory()
 
-    const totalPrice = store.cart.reduce((total, item) => {
-        return total += item.price
-    }, 0)
+    const cartStore = useContext(CartStore)
+    const { totalProductsFromCart, totalPrice } = cartStore
 
     return (
         <header className="header">
             <h1 className="header__title">Bike Shop</h1>
             <div className="header__cart">
-                <div className="header__cart--resume">
-                    <p className="badge">{store.cart.length}</p>
+                <div className="header__cart--resume" onClick={() => history.push('/cart')}>
+                    <p className="badge">{totalProductsFromCart}</p>
                     <FontAwesomeIcon icon={faShoppingCart} className="cart" />
                 </div>
 
@@ -27,4 +28,4 @@ function Header() {
     )
 }
 
-export default Header
+export default observer(Header)

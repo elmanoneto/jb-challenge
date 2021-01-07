@@ -1,0 +1,26 @@
+section.products .products__image {
+    width: 500px;
+    height: 500px;
+}
+
+section.products .products__specifications ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+section.products .products__specifications ul li:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+
+div.checkout {
+    padding: 20px 0;
+    float: right;
+}
+
+div.checkout button {
+    background-color: #000;
+    color: #fff;
+    border: 0;
+    padding: 5px 20px;
+}
