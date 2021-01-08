@@ -1,0 +1,21 @@
+section.payment {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+section.payment .payment__input-card {
+    width: 200px;
+    height: 25px;
+    outline: none;
+    font-size: 16px;
+}
+
+section.payment .payment__button {
+    margin-top: 10px;
+    background-color: #000;
+    border: 0;
+    color: #fff;
+    padding: 5px;
+    width: 80px;
+}

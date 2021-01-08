@@ -23,7 +23,7 @@ function Cart() {
 
     return (
         <section className="cart">
-            <h2>Cart</h2>
+            <h2>Carrinho</h2>
             {!getCart.length && <p>Carrinho vazio.</p>}
             
             {getCart.length > 0 && getCart.map(item => {
@@ -48,9 +48,11 @@ function Cart() {
             
             <div className="checkout">
                 <p>Total de produtos: {totalProductsFromCart}</p>
-                <button onClick={() => history.push('/checkout')}>
-                    Pagar
-                </button>
+                {totalProductsFromCart > 0 &&
+                    <button onClick={() => history.push('/checkout')}>
+                        Pagar
+                    </button>
+                }
             </div>
         </section>
     )

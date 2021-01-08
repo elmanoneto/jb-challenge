@@ -7,6 +7,7 @@ const cartsController = CartsController
 
 const ROUTER_NAME = '/carts'
 
-productsRouter.post(ROUTER_NAME, cartsController.checkout)
+productsRouter.post(`${ROUTER_NAME}/checkout`, cartsController.checkout)
+productsRouter.get(ROUTER_NAME, cartsController.index)
 
 export default productsRouter

@@ -7,6 +7,8 @@ class ProductsController {
         try {
             const products = db.getCollection('products')
 
+            console.log(products)
+
             const result = products.find({})
 
             if (result) {

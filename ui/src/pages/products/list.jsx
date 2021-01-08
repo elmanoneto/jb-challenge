@@ -26,9 +26,7 @@ function List () {
     const { setProducts, getProducts } = cartStore
 
     const addProducts = data => {
-        if (!getProducts.length) {
-            setProducts(data)
-        }
+        setProducts(data)
     }
 
     const { data } = useQuery(GET_PRODUCTS, { onCompleted: addProducts })
