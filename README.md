@@ -7,7 +7,9 @@ Bike shop made with node, react and graphql.
 Para rodar o backend, sera necesario ter o yarn instalado. Assim que levantar o servidor, os produtos serão criados estarão criados.
 
 Principais rotas\
-http://localhost:4000/products\
+http://localhost:4000/products
+
+
 http://localhost:4000/carts
 
 ```bash
