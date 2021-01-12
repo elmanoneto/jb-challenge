@@ -4,7 +4,7 @@ Bike shop made with node, react and graphql.
 
 ## Instalação 
 
-Para rodar o backend, sera necesario ter o yarn instalado. Assim que levantar o servidor, os produtos serão criados estarão criados.
+Para rodar o backend, sera necesario ter o yarn instalado. Assim que levantar o servidor, os produtos serão criados automaticamente.
 
 Principais rotas\
 http://localhost:4000/products
@@ -33,6 +33,8 @@ yarn e2e
 ```
 
 ## Considerações 
+Como um dos requisitos era facilidade para instalar o projeto, decidi usar um banco em memoria, salvando assim em formato de documentos (JSON).
+
 Para fazer a compra do produto, utilizar o numero do cartao 12345, a compra será aprovada, os demais números irão reprovar.
 
 Existe um problema de cache no consumo do graphql, tentei ajeitar mas ainda nao consegui resolver o problema, nós realizamos uma compra, o carrinho é salvo no banco, a quantidade de produtos diminui no banco, e é possivel verificar essas alterações atraves das rotas, porém no consumo do graphql se atualizarmos a pagina ele volta com a quantidade original dos produtos, creio que existe alguma configuração para desabilitar o cache, mas como nunca havia trabalhado com essa tecnologia antes ainda não descobri o problema.
