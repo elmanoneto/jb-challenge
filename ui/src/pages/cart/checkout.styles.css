@@ -18,4 +18,5 @@ section.payment .payment__button {
     color: #fff;
     padding: 5px;
     width: 80px;
+    margin-left: 10px;
 }

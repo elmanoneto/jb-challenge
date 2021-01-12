@@ -4,6 +4,16 @@ section.list {
     flex-wrap: wrap;
 }
 
+@media (max-width:768px) { 
+    section.list {
+        flex-direction: column;
+    }
+    section.list .list__item {
+        min-width: 400px;
+    }
+}
+
+
 section.list .list__item {
     flex: 0 0 32.3333%;
     border: 1px solid black;
