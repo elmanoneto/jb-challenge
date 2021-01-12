@@ -2,7 +2,7 @@ import { createContext } from 'react'
 import { observable, computed, makeObservable, action, toJS } from 'mobx'
 
 class CartStore {
-    @observable.shallow
+    @observable.deep
     public cart: any = []
 
     @observable.deep
@@ -57,6 +57,11 @@ class CartStore {
         this.cart = products
 
         this.increaseProduct(item)
+    }
+
+    @action.bound
+    checkout () {
+        this.cart = []
     }
 
     decreaseProduct(product: any) {

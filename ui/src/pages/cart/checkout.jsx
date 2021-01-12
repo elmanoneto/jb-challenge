@@ -8,7 +8,7 @@ import { observer } from 'mobx-react-lite'
 
 function Checkout() {
     const cartStore = useContext(CartStore)
-    const { getCart, totalProductsFromCart } = cartStore
+    const { getCart, totalProductsFromCart, checkout } = cartStore
     const history = useHistory()
     const [cardNumber, setCardNumber] = useState('')
 
@@ -21,7 +21,8 @@ function Checkout() {
     const payment = async (cardNumber, cart) => {
         try {
             const result = await CheckoutService.pay(cardNumber, cart)
-            console.log('aqui', result)
+            checkout()
+            alert('Compra realizada com sucesso!')
         } catch (error) {
             console.log('error', error)
             alert('Cartão invalido!')

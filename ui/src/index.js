@@ -7,14 +7,26 @@ import { ApolloProvider } from '@apollo/react-hooks'
 
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals'
 
-const cache = new InMemoryCache()
+const defaultOptions = {
+	watchQuery: {
+	  fetchPolicy: 'no-cache',
+	  errorPolicy: 'ignore',
+	},
+	query: {
+	  fetchPolicy: 'no-cache',
+	  errorPolicy: 'all',
+	},
+  }
+
+const cache = new InMemoryCache({ resultCaching: false })
 const link = new HttpLink({ uri: 'http://localhost:4000/graphql' })
 
 const client = new ApolloClient({
 	cache,
-	link
+	link,
+	defaultOptions: defaultOptions
 })
 
 ReactDOM.render(

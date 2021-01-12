@@ -15,7 +15,7 @@ function Header() {
 
     return (
         <header className="header">
-            <h1 className="header__title">Bike Shop</h1>
+            <h1 className="header__title" onClick={() => history.push('/')}>Bike Shop</h1>
             <div className="header__cart">
                 <div className="header__cart--resume" onClick={() => history.push('/cart')}>
                     <p className="badge">{totalProductsFromCart}</p>

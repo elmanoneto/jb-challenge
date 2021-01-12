@@ -25,7 +25,7 @@ class CartsController {
 
         let { cardNumber, products } = req.body
 
-        if (cardNumber === '123') {
+        if (cardNumber === '12345') {
             products = JSON.parse(products)
 
             await products.forEach((item: any) => {

@@ -9,6 +9,10 @@ header.header .header__title {
     text-align: center;
 }
 
+header.header h1 {
+    cursor: pointer;
+}
+
 header.header .header__cart {
     display: flex;
     align-items: center;
