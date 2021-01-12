@@ -12,12 +12,17 @@ function Checkout() {
     const history = useHistory()
     const [cardNumber, setCardNumber] = useState('')
 
+    useEffect(() => {
+        if (totalProductsFromCart === 0) {
+            history.push('/')
+        }
+    }, [totalProductsFromCart])
+
     const payment = async (cardNumber, cart) => {
         try {
             const result = await CheckoutService.pay(cardNumber, cart)
             checkout()
             alert('Compra realizada com sucesso!')
-            history.push('/')
         } catch (error) {
             console.log('error', error)
             alert('Cartão invalido!')
