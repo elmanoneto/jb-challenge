@@ -95,7 +95,7 @@ class App {
             make: 'KSW',
             image: 'https://static.netshoes.com.br/produtos/bicicleta-aro-29-ksw-xlt-21v-cambios-shimano-freio-a-disco-mecanico-com-suspensao/08/CGY-0004-108/CGY-0004-108_zoom1.jpg?ts=1587507603&',
             weight: 12,
-            price: 169985,
+            price: 16998,
             hoop: 29
         })
     }

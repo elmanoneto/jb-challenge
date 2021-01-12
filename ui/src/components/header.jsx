@@ -22,7 +22,7 @@ function Header() {
                     <FontAwesomeIcon icon={faShoppingCart} className="cart" />
                 </div>
 
-                Total: R$ {totalPrice}
+                Total: R$ {totalPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}
             </div>
         </header>
     )

@@ -35,7 +35,7 @@ function Cart() {
                         <div className="cart__wrapper--details">
                             <p><strong>{item.name}</strong></p>
                             <p> Quantitdade: {item.quantity}</p>
-                            <p> Total: {item.price}</p>
+                            <p> Total: {item.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
                         </div>
                         <div className="cart__wrapper--controls">
                             <p className="control" onClick={() => removeProductFromCart(item)}>-</p>

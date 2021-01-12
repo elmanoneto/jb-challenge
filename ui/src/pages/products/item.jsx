@@ -17,7 +17,7 @@ function Item({ product }) {
                 <img src={product.image} alt="" onClick={() => history.push(`/products/${product.id}`)} id="product-image" />
                 <h4>{product.name}</h4>
                 <div className="buy">
-                    <p className="price">R$ {product.price}</p>
+                    <p className="price">{product.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
                     <button 
                         className="btn-buy"
                         id="btn-buy"
