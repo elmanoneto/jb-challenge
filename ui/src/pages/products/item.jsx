@@ -12,14 +12,15 @@ function Item({ product }) {
 
     return (
         <Fragment>
-            <div className={`list__item ${product.quantity === 0 ? 'fade' : ''}`}>
+            <div className={`list__item ${product.quantity === 0 ? 'fade' : ''}`} id="product">
                 <p className="disponibility">{product.quantity} disponíveis</p>
-                <img src={product.image} alt="" onClick={() => history.push(`/products/${product.id}`)}/>
+                <img src={product.image} alt="" onClick={() => history.push(`/products/${product.id}`)} id="product-image" />
                 <h4>{product.name}</h4>
                 <div className="buy">
                     <p className="price">R$ {product.price}</p>
                     <button 
-                        className="btn-buy" 
+                        className="btn-buy"
+                        id="btn-buy"
                         onClick={() => { addProductToCart(product) }} 
                         disabled={product.quantity < 1}>Add to cart
                     </button>

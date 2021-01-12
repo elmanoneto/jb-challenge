@@ -33,13 +33,15 @@ function Checkout() {
         <>
             <h1>Checkout</h1>
             <section className="payment">
-                <input 
-                    type="text" 
-                    placeholder="Insira o numero do cartao" 
-                    value={cardNumber}
-                    onChange={e => setCardNumber(e.target.value)}
-                    className="payment__input-card" />
-                <button className="payment__button" onClick={() => payment(cardNumber, getCart)}>Pagar</button>
+                <form onSubmit={() => payment(cardNumber, getCart)} id="form-checkout">
+                    <input 
+                        type="text" 
+                        placeholder="Insira o numero do cartao" 
+                        value={cardNumber}
+                        onChange={e => setCardNumber(e.target.value)}
+                        className="payment__input-card" />
+                    <button className="payment__button" onClick={() => payment(cardNumber, getCart)}>Pagar</button> 
+                </form>
             </section>
         </>
     )
