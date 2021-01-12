@@ -12,13 +12,11 @@ import reportWebVitals from './reportWebVitals'
 const defaultOptions = {
 	watchQuery: {
 	  fetchPolicy: 'no-cache',
-	  errorPolicy: 'ignore',
 	},
 	query: {
 	  fetchPolicy: 'no-cache',
-	  errorPolicy: 'all',
-	},
-  }
+	}
+}
 
 const cache = new InMemoryCache({ resultCaching: false })
 const link = new HttpLink({ uri: 'http://localhost:4000/graphql' })
