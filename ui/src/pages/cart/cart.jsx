@@ -50,7 +50,7 @@ function Cart() {
                 <p>Total de produtos: {totalProductsFromCart}</p>
                 {totalProductsFromCart > 0 &&
                     <button onClick={() => history.push('/checkout')} id="pay-btn">
-                        Pagar
+                        Continuar
                     </button>
                 }
             </div>
